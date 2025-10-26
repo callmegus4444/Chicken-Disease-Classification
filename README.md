@@ -211,12 +211,9 @@ docker run -p 80:80 chicken-clf:latest
 
 ---
 
-## 🧪 Notes & Tips
+## 🗺️ Flow Diagram
 
-- Keep your dataset pathing stable; use `config.yaml` to change locations without code edits.
-- Track large datasets via **DVC remote** instead of Git LFS.
-- Persisted metrics live in `scores.json` for easy CI checks.
-- For cloud deploys, adjust `app.py` `host/port` and expose the correct container port.
+![Pipeline Flow](https://drive.google.com/uc?export=view&id=14U5PX9FFXRlbOVhut6QWIfBJGO7vwcDi)
 
 ---
 
@@ -243,46 +240,6 @@ tensorboard --logdir artifacts/training/callbacks/tensorboard_log
 
 ---
 
-## 🗺️ Flowchart (Mermaid)
-
-> Paste into a Markdown viewer that supports Mermaid (or use the Napkin prompt below).
-
-```mermaid
-flowchart TD
-    A[Start] --> B[Data Ingestion]
-    B --> C[Prepare Base Model]
-    C --> D[Training]
-    D --> E[Evaluation]
-    E -->|model.keras| F[Prediction API]
-    F --> G[Client/UI]
-```
-
----
-
-## 🧾 Napkin / Prompt‑to‑Image (Flowchart Text)
-
-```
-Nodes:
-  Start
-  Data Ingestion
-  Prepare Base Model
-  Training
-  Evaluation
-  Prediction API
-  Client/UI
-
-Edges:
-  Start -> Data Ingestion -> Prepare Base Model -> Training -> Evaluation -> Prediction API -> Client/UI
-
-Notes:
-  - Show artifacts folders under each stage (e.g., artifacts/data_ingestion, artifacts/training)
-  - Distinguish model flow (model.keras) from data flow
-  - Minimal, clean, modern style
-```
-
----
-
 ## 📜 License
 
 MIT — see `LICENSE`.
-
